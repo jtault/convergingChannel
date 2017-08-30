@@ -1,0 +1,23 @@
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+
+    root            "/.automount/werner/Werner/bgschaid/bgschaid-foamStuff/DepositionTests";
+    case            "convergingChannel";
+    instance        "system";
+    local           "";
+
+    class           dictionary;
+    object          funkySetFieldsDict;
+}
+
+expressions
+(
+	setCsalt
+	{
+		field Csalt; // Field to initialize
+		expression "1.0 + (1.0e-6 - 1.0) / 20.0e-3 * pos().x"; // c1 = 1.0, c2 = 1.e-6, ell = 20.0e-3
+		keepPatches true;
+	}
+);
