@@ -29,7 +29,7 @@ Dpart5           Dpart5 [ 0 2 -1 0 0 0 0 ] 1.0e-12;
 
 timeFactor      timeFactor [ 0 0 0 0 0 0 0 ] 1000;
 
-myTol           myTol [ 0 0 0 0 0 0 0 ] 5.0e-9;
+myTol           myTol [ 0 0 0 0 0 0 0 ] 5.0e-10;
 
 numSteps        numSteps [ 0 0 0 0 0 0 0 ] 50;
 
@@ -37,10 +37,10 @@ numIters        numIters [ 0 0 0 0 0 0 0 ] 2000;
 
 minIters        minIters [ 0 0 0 0 0 0 0 ] 10;
 
-gammap1          gammap1 [ 0 2 -1 0 0 0 0 ] 200e-12;
-gammap2          gammap2 [ 0 2 -1 0 0 0 0 ] 400e-12;
-gammap3          gammap3 [ 0 2 -1 0 0 0 0 ] 600e-12;
-gammap4          gammap4 [ 0 2 -1 0 0 0 0 ] 800e-12;
-gammap5          gammap5 [ 0 2 -1 0 0 0 0 ] 1000e-12;
+gammap1          gammap1 [ 0 2 -1 0 0 0 0 ] 20e-12;
+gammap2          gammap2 [ 0 2 -1 0 0 0 0 ] 40e-12;
+gammap3          gammap3 [ 0 2 -1 0 0 0 0 ] 60e-12;
+gammap4          gammap4 [ 0 2 -1 0 0 0 0 ] 80e-12;
+gammap5          gammap5 [ 0 2 -1 0 0 0 0 ] 100e-12;
 
 // ************************************************************************* //

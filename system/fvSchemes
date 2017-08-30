@@ -22,29 +22,38 @@ ddtSchemes
 
 gradSchemes
 {
-  //    default         Gauss linear;
  default none;
  grad(Csalt) Gauss linear;
- grad(Cpart) Gauss linear;
+ grad(Cpart1) Gauss linear;
+ grad(Cpart2) Gauss linear;
+ grad(Cpart3) Gauss linear;
+ grad(Cpart4) Gauss linear;
+ grad(Cpart5) Gauss linear;
  grad(U) Gauss linear;
  grad(p) Gauss linear;
 }
 
 divSchemes
 {
-  //    default         Gauss linear;
  default none;
  div(phi,Csalt) Gauss linear;
  div(phi,U) Gauss linear;
  div((nuEff*dev2(T(grad(U))))) Gauss linear;
- div((interpolate((U+((gammap|Csalt)*grad(Csalt))))&S),Cpart) Gauss limitedLinear 1;
+ div((interpolate((U+((gammap1|Csalt)*grad(Csalt))))&S),Cpart1) Gauss limitedLinear 1.0;
+ div((interpolate((U+((gammap2|Csalt)*grad(Csalt))))&S),Cpart2) Gauss limitedLinear 1.0;
+ div((interpolate((U+((gammap3|Csalt)*grad(Csalt))))&S),Cpart3) Gauss limitedLinear 1.0;
+ div((interpolate((U+((gammap4|Csalt)*grad(Csalt))))&S),Cpart4) Gauss limitedLinear 1.0;
+ div((interpolate((U+((gammap5|Csalt)*grad(Csalt))))&S),Cpart5) Gauss limitedLinear 1.0;
 }
 
 laplacianSchemes
 {
-  //    default         Gauss linear corrected;
  default none;
- laplacian(Dpart,Cpart) Gauss linear corrected;
+ laplacian(Dpart1,Cpart1) Gauss linear corrected;
+ laplacian(Dpart2,Cpart2) Gauss linear corrected;
+ laplacian(Dpart3,Cpart3) Gauss linear corrected;
+ laplacian(Dpart4,Cpart4) Gauss linear corrected;
+ laplacian(Dpart5,Cpart5) Gauss linear corrected;
  laplacian(Dsalt,Csalt) Gauss linear corrected;
  laplacian(nuEff,U) Gauss linear corrected;
  laplacian((1|A(U)),p) Gauss linear corrected;
@@ -52,7 +61,6 @@ laplacianSchemes
 
 interpolationSchemes
 {
-  //    default         linear;
  default none;
  flux(HbyA) linear;
  flux(U) linear;

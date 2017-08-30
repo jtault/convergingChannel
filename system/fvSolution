@@ -20,7 +20,7 @@ solvers
     p
       {
         solver          GAMG;
-        tolerance       1e-14;
+        tolerance       1e-10;
         relTol          0.5;
         smoother        GaussSeidel;
         cacheAgglomeration true;
@@ -32,7 +32,7 @@ solvers
     pFinal
       {
         solver          GAMG;
-        tolerance       1e-14;
+        tolerance       1e-10;
         relTol          0.5;
         smoother        GaussSeidel;
         cacheAgglomeration true;
@@ -45,14 +45,14 @@ solvers
       {
         solver          smoothSolver;
         smoother        symGaussSeidel;
-        tolerance       1e-14;
+        tolerance       1e-11;
         relTol          0.5;
       }
 
     "(U|k|epsilon)Final"
       {
         $U;
-        tolerance       1e-14;
+        tolerance       1e-11;
         relTol          0.5;
       }
 
@@ -60,15 +60,15 @@ solvers
       {
 	solver PBiCG;
 	preconditioner DILU;
-	tolerance 1e-8;
+	tolerance 1e-11;
 	relTol 0;
       }
 
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-8;relTol 0;}
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-8;relTol 0;}
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-8;relTol 0;}
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-8;relTol 0;}
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-8;relTol 0;}
+    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
+    Cpart2{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
+    Cpart3{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
+    Cpart4{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
+    Cpart5{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
 
 }
 
@@ -97,9 +97,9 @@ SIMPLE
 
     residualControl
       {
-        p               1e-14;
-        U               1e-14;
-        nuTilda         1e-14;
+        p               1e-16;
+        U               1e-16;
+        nuTilda         1e-16;
       }
 }
 
