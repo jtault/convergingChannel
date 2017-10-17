@@ -61,14 +61,14 @@ solvers
 	solver PBiCG;
 	preconditioner DILU;
 	tolerance 1e-11;
-	relTol 0;
+	relTol 0.5;
       }
 
-    Cpart1{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
-    Cpart2{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
-    Cpart3{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
-    Cpart4{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
-    Cpart5{solver PBiCG;preconditioner DILU;tolerance 1e-11;relTol 0;}
+    Cpart1{solver PBiCGStab;preconditioner DILU;tolerance 1e-12;relTol 0.001;}
+    Cpart2{solver PBiCGStab;preconditioner DILU;tolerance 1e-12;relTol 0.001;}
+    Cpart3{solver PBiCGStab;preconditioner DILU;tolerance 1e-12;relTol 0.001;}
+    Cpart4{solver PBiCGStab;preconditioner DILU;tolerance 1e-12;relTol 0.001;}
+    Cpart5{solver PBiCGStab;preconditioner DILU;tolerance 1e-12;relTol 0.001;}
 
 }
 

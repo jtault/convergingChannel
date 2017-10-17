@@ -14,10 +14,65 @@ FoamFile
 
 expressions
 (
-	setCsalt
+
+        // Csalt calculation with just c0
+        setCsalt
 	{
 		field Csalt; // Field to initialize
-		expression "1.0 + (1.0e-6 - 1.0) / 20.0e-3 * pos().x"; // c1 = 1.0, c2 = 1.e-6, ell = 20.0e-3
+		expression "1+(-1+exp(A*pos().x/L))*(beta-1)/(-1+exp(A))";
 		keepPatches true;
+                variables (
+                    "L=400e-6;"
+                    "A=5.0;"
+                    "beta=0.01;"
+                );
 	}
+
+/*
+        // Csalt calculation with epsilon^2 correction
+        setCsalt
+	{
+		field Csalt; // Field to initialize
+		expression "1+(-1+exp(A*pos().x/L))*(beta-1)/(-1+exp(A))+pow(h/L,2)*(-pow(A,2)*exp(A*pos().x/L)*pow(pos().y/h,2)*(-2+pow(pos().y/h,2))*(exp(A)+exp(A*pos().x/L)*(1+A*H)*(beta-1)-beta)*(beta-1)/8/(exp(A)-1)/(exp(A)+exp(A*pos().x/L)*(beta-1)-beta))";
+		keepPatches false;
+                variables (
+                    "h=1e-6;"
+                    "L=400.0e-6;"
+                    "A=5.0;"
+                    "beta=0.01;"
+                    "H=0.065;"
+                );
+	}
+*/
+/*
+        setNLeft
+        {
+            field Cpart2;
+            expression "(3-3*pow(pos().y/h,2)+3*exp(A)*(-1+pow(pos().y/h,2))-2*G*(beta-1))*(exp(A)+exp(A*pos().x/L)*(beta-1)-beta)/(-1+exp(A))/(3*(-1+pow(pos().y/h,2))*(exp(A)-beta)-exp(A*pos().x/L)*(3+2*G-3*pow(pos().y/h,2))*(beta-1))";
+            keepPatches false;
+            variables (
+                "A=5.0;"
+                "beta=0.01;"
+                "G=0.475;"
+                "h=1e-6;"
+                "L=400e-6;"
+            );
+        }
+*/
+
+        setU
+        {
+            field U;
+            expression "vector(U_bar/2.*(3.-3.*pow(pos().y/h,2)-A*exp(A*pos().x/L)*H*(-1+3*pow(pos().y/h,2))*(beta-1)/(exp(A)+exp(A*pos().x/L)*(beta-1)-beta)),U_bar*h/L*pow(A,2)*exp(A*pos().x/L)*H*pos().y/h*(-1+pow(pos().y/h,2))*(exp(A)-beta)*(beta-1)/2.0/pow(exp(A)+exp(A*pos().x/L)*(beta-1)-beta,2),0)";
+            keepPatches false;
+            variables (
+                "U_bar=20.0e-6;"
+                "h=1e-6;"
+                "L=400.0e-6;"
+                "A=5.0;"
+                "beta=0.01;"
+                "H=0.065;"
+            );
+        }
+
 );
