@@ -67,7 +67,7 @@ expressions
             keepPatches false;
             variables (
                 "U_bar=20.0e-6;"
-                "h=1e-6;"
+                "h=0.1e-6;"
                 "L=400.0e-6;"
                 "A=5.0;"
                 "beta=0.01;"
